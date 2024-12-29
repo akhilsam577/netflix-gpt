@@ -7,13 +7,11 @@ const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
 
   const browseMovies = async () => {
-    try {
-      const movieData = await fetch(MOVIES_API, API_OPTIONS);
-      const json = movieData.json();
-      dispatch(addNowPlayingMovies(json.results));
-    } catch (err) {
-      console.log(err.message);
-    }
+    const movieData = await fetch(MOVIES_API, API_OPTIONS);
+    const json = await movieData.json();
+    // console.log(json.results);
+
+    dispatch(addNowPlayingMovies(json.results));
   };
 
   useEffect(() => {
