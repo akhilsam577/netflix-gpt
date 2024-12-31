@@ -17,7 +17,7 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const name = useRef(null);
-  const email = useRef(null);
+  const email = useRef("null");
   const password = useRef(null);
 
   const toggleSignInForm = () => {
@@ -29,14 +29,11 @@ const Login = () => {
       email.current.value,
       password.current.value
     );
-    console.log(email.current.value);
-    console.log(password.current.value);
     setError(message);
 
     if (message) {
       return;
     }
-    console.log("isSignInForm", isSignInForm);
 
     if (!isSignInForm) {
       createUserWithEmailAndPassword(
@@ -52,7 +49,6 @@ const Login = () => {
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
-              console.log("auth.currentUser".auth);
               dispatch(
                 addUser({
                   uid: uid,
